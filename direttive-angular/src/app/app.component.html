@@ -1,0 +1,27 @@
+
+  <h1>I template Angular</h1>
+
+    <button (click) = "addMessages()">Aggiungi Msg</button>
+    <div *ngIf="messages">
+
+      {{messages}}
+
+    </div>
+
+    <button (click) = "fillList()">Valorizza Lista</button>
+    <div *ngFor="let s of list">
+
+      {{s}}
+
+    </div>
+    <button (click) = "changeWarning()">Warning</button>
+
+    <div [class.alert-warning] = "warning"> <!-- Le parentesi quadre servono per modificare il dom-->
+      Messaggio di warning
+    </div>
+
+    <input type="text" [(ngModel)] = "coloreBackground"> <!-- Le parenti quadre e tonde permettodono di modificare il dom e l'evento-->
+    
+    <div class="col-sm-2 border" [style.backgroundColor]="coloreBackground">
+      Blocco colorato
+    </div>

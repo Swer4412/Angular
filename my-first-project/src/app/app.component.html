@@ -1,0 +1,9 @@
+<div>
+  {{str}}
+</div>
+
+<div>
+  <button (click)="cambia()">cambia valore</button>
+</div>
+{{colore}}
+<app-scegli-colore [strColori]="'green red blue'" (outputColor)="onOutputColor($event)"></app-scegli-colore>

@@ -1,0 +1,1 @@
+var input1 = document.getElementbyid("nome").value
