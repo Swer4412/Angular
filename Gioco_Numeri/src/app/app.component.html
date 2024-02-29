@@ -1,1 +1,12 @@
-<input id="nome">
+<div>
+    <label>Risultato complessivo: {{result}}</label>
+    <p>Corrette: {{correct}}. Errate: {{wrong}}</p>
+    <p>Turno: {{turn}}</p>
+    <p>Tempo rimanente: {{timer}}</p>
+    <div>
+        <input readonly [value]="firstNumber"/> + 
+        <input readonly [value]="secondNumber"/> =  
+        <input />     
+        <button (click) = "conferma()">Conferma</button>
+    </div>
+</div>

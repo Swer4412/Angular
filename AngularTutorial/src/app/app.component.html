@@ -1,0 +1,13 @@
+<div>
+  <div *ngIf="items.length == 0; else showItems">
+    
+  </div>
+
+  <ng-template #showItems>
+    <div *ngFor="let item of items">
+      <!-- viene chiamata direttiva, iniziano con * e servono per avere funzionalita javascript in html -->
+      {{ item.wishText }}
+    </div>
+  </ng-template>
+
+</div>
