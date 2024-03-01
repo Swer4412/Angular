@@ -4,8 +4,14 @@
   </div>
 
   <ng-template #showItems>
-    <div *ngFor="let item of items">
+    <div *ngFor="let item of items; index as ii">
       <!-- viene chiamata direttiva, iniziano con * e servono per avere funzionalita javascript in html -->
+      <input 
+      type="checkbox" 
+      [checked]="item.isComplete"
+      [attr.data-index]="ii"
+      
+      >
       {{ item.wishText }}
     </div>
   </ng-template>
