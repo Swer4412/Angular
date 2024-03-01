@@ -1,17 +1,36 @@
 <div>
-  <div *ngIf="items.length == 0; else showItems">
-    
+
+  <form>
+    <div>
+      <label>Wish</label>
+      <input name="new-wish-text" [(ngModel)]="newWishText">
+      <!-- Se si vuole prendere i dati dal binding bidirezionale, bisogna mettere il nome all input, se si trova dentro a <form> -->
+    </div>
+    <div>
+      <button type="submit" (click)="$event.preventDefault(); addNewWish()">
+        <!-- due funzioni collegate allo stesso evento-->
+        Add Wish
+      </button>
+    </div>
+  </form>
+
+  <div>
+    <select [(ngModel)]="listFilter">
+      <option value="0">All</option>
+      <option value="1">Unfullfilled</option>
+      <option value="2">Fullfilled</option>
+    </select>
+  </div>
+
+
+  <div *ngIf="visibleItems.length == 0; else showItems">
+    nessun item
   </div>
 
   <ng-template #showItems>
-    <div *ngFor="let item of items; index as ii">
+    <div *ngFor="let item of visibleItems; index as ii">
       <!-- viene chiamata direttiva, iniziano con * e servono per avere funzionalita javascript in html -->
-      <input 
-      type="checkbox" 
-      [checked]="item.isComplete"
-      [attr.data-index]="ii"
-      
-      >
+      <input type="checkbox" [checked]="item.isComplete" [attr.data-index]="ii" (click)="toggleItem(item)">
       {{ item.wishText }}
     </div>
   </ng-template>
