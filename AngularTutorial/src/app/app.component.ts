@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { WishItem } from '../../share/models/wishItem';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { WishListComponent } from './wish-list/wish-list.component';
 
 const filters = [
   (item : WishItem) => item,
@@ -13,7 +14,7 @@ const filters = [
 @Component({
   selector: 'app-root', //Questo determina come il componente puo essere richiamato es. <app-root></app-root>
   standalone: true,
-  imports: [RouterOutlet, CommonModule, FormsModule],
+  imports: [RouterOutlet, CommonModule, FormsModule, WishListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -30,11 +31,6 @@ export class AppComponent {
   addNewWish() {
     this.items.push(new WishItem(this.newWishText))
     this.newWishText = ""
-  }
-
-  toggleItem(item: WishItem) { 
-    //Questo viene fatto perchè l'utilizzo di {{}} è un one-way binding, di conseguenza il valore registrato in html è sempre lo stesso
-    item.isComplete = !item.isComplete 
   }
   
   listFilter : number = 0

@@ -22,17 +22,9 @@
     </select>
   </div>
 
-
-  <div *ngIf="visibleItems.length == 0; else showItems">
-    nessun item
+  <div>
+    <!-- Le parentesi quadre servono per specificare le proprietà dell html ma anche degli oggetti-->
+    <wish-list [wishes]="visibleItems"></wish-list>
   </div>
-
-  <ng-template #showItems>
-    <div *ngFor="let item of visibleItems; index as ii">
-      <!-- viene chiamata direttiva, iniziano con * e servono per avere funzionalita javascript in html -->
-      <input type="checkbox" [checked]="item.isComplete" [attr.data-index]="ii" (click)="toggleItem(item)">
-      {{ item.wishText }}
-    </div>
-  </ng-template>
 
 </div>
