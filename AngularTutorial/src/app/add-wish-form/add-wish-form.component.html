@@ -1,0 +1,13 @@
+<form>
+    <div>
+      <label>Wish</label>
+      <input name="new-wish-text" [(ngModel)]="newWishText">
+      <!-- Se si vuole prendere i dati dal binding bidirezionale, bisogna mettere il nome all input, se si trova dentro a <form> -->
+    </div>
+    <div>
+      <button type="submit" (click)="$event.preventDefault(); addNewWish()">
+        <!-- due funzioni collegate allo stesso evento-->
+        Add Wish
+      </button>
+    </div>
+  </form>
