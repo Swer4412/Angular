@@ -17,6 +17,7 @@ const filters = [
 })
 export class WishFilterComponent implements OnInit {
   //Per il 2 way binding, bisogna definire un input con un nome e un output con lo stesso nome + Change
+  //Questa proprietà si usa per fare il 2 way binding con il parent di questo componente
   @Input() filter : any;
   @Output() filterChange = new EventEmitter<any>()
   

@@ -25,6 +25,10 @@ export class ComuniService {
       flagCapoluogo: "N"
     }
   ];
+
+  findAll() {
+    return this.comuniArray
+  }
   
 
 }
