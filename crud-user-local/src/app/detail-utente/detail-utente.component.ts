@@ -15,10 +15,12 @@ export class DetailUtenteComponent implements OnInit{
   id: number = -1;
 
   constructor(private route: ActivatedRoute) {
-
+    
   }
+
   ngOnInit(): void {
     
+    //Quando c'è una variazione dei parametri, questa funzione viene eseguita.
     this.route.params.subscribe(params => {
 
       this.id = params['id'];

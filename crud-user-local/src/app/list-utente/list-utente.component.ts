@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { ComuniService } from '../comuni.service';
 
 @Component({
   selector: 'app-list-utente',
@@ -11,12 +12,11 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class ListUtenteComponent {
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private service : ComuniService) {
 
   }
 
   detail(id: number) {
-
     this.router.navigateByUrl(`/detail/${id}`);
   }
 }
