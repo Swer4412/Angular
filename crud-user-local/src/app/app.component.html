@@ -1,0 +1,26 @@
+<!-- Navbar Principale -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top border">
+
+  <a class="navbar-brand ms-3" [routerLink] = "'/'">
+    <img src="assets/logo-jac.svg" height="50px" width="85px">
+  </a>
+</nav>
+
+<!-- Navbar Laterale -->
+<div class="sidebar border">
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="'/'">Lista</a>
+    </li>
+  </ul>
+</div>
+<!-- Contenuto Principale -->
+<main class="content border">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-10">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</main>
