@@ -1,13 +1,18 @@
-<div>
+<div class="container">
   <!-- add wish è l'event emitter, quando l'event emitter emana un evento, esso viene catturato qui -->
   <!-- quando l'evento viene scatenato, prendiamo il valore di questo evento e lo mettiamo dentro a items -->
   <!-- so gia che il valore di questo evento non è altro che un WishItem e quindi posso inserirlo dentro items -->
   <add-wish-form (addWish)="items.push($event)"></add-wish-form>
 
   <!-- 2 way binding, viene catturato l'evento e ne viene assegnato il valore a filter-->
-  <wish-filter [(filter)]="filter"></wish-filter>
-
+  <div class="row mt-2">
+    <wish-filter [(filter)]="filter"></wish-filter>
+  </div>
   <!-- Le parentesi quadre servono per specificare le proprietà dell html ma anche degli oggetti-->
-  <wish-list [wishes]="items.filter(filter)"></wish-list>
+  <div class="row mt-2">
+    <div class="col-sm-4">
+      <wish-list [wishes]="items.filter(filter)"></wish-list>
+    </div>
+  </div>
 
 </div>

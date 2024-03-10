@@ -22,5 +22,11 @@ export class AppComponent {
     new WishItem("Imparare linux")
   ]
 
+  constructor() {
+    events.listen('removeWish', () => {
+      
+    })
+  }
+
   filter : any
 }
