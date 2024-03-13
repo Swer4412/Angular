@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { WishItem } from '../../../share/models/wishItem';
 import { CommonModule } from '@angular/common';
+import events from '../../../share/services/EventService';
 
 @Component({
   selector: 'wish-list-item',
@@ -10,22 +11,18 @@ import { CommonModule } from '@angular/common';
   styleUrl: './wish-list-item.component.css'
 })
 export class WishListItemComponent {
-  @Input() wishText! : string //! è il Non Null Assertion Operator, cioè dici a typescript di non preoccuparsi che tanto quel valore non è nullo
-  
-  @Input() fullfilled! : boolean
-  @Output() fullfilledChange = new EventEmitter<boolean>()
+  @Input() wish! : WishItem
 
   get cssClasses() {
     //Non so come funzioni ma funziona
-    return {'strikeout' : this.fullfilled} 
+    return {'strikeout' : this.wish.isComplete} 
   }
 
   removeWish() {
-    events.emit('removeWish', this.wishText)
+    events.emit('removeWish', this.wish)
   }
 
   toggleFullfilled() { 
-    this.fullfilled = !this.fullfilled
-    this.fullfilledChange.emit(this.fullfilled)
+    this.wish.isComplete = !this.wish.isComplete
   }
 }

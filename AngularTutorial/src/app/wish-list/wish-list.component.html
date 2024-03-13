@@ -3,6 +3,6 @@
 </div>
 
 <ng-template #showItems>
-    <wish-list-item *ngFor="let wish of wishes" [wishText]="wish.wishText" [(fullfilled)]="wish.isComplete">
+    <wish-list-item *ngFor="let wish of wishes" [wish]="wish">
     </wish-list-item>
 </ng-template>
