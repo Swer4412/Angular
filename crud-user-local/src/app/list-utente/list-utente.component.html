@@ -3,3 +3,24 @@
 <a [routerLink] = "'/detail/1'">Vai al dettaglio</a>
 <br>
 <button (click) = "detail(1)">Dettaglio</button>
+
+<table class="table">
+    <thead>
+        <th>codComune</th>
+        <th>codUnitaTerr</th>
+        <th>denIta</th>
+        <th>denItaExt</th>
+        <th>flagCapoluogo</th>
+        <th>progressivoComune</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of listComuni">
+            <td>{{c.codComune}}</td>
+            <td>{{c.codUnitaTerritoriale}}</td>
+            <td>{{c.denIta}}</td>
+            <td>{{c.denItaExt}}</td>
+            <td>{{c.flagCapoluogo}}</td>
+            <td>{{c.progressivoComune}}</td>
+        </tr>
+    </tbody>
+</table>

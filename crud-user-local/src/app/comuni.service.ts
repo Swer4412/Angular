@@ -1,35 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Comune } from './_dto/comune';
+import { Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ComuniService {
-  constructor() { }
+  constructor(private httpClient: HttpClient) {
 
-  comuniArray : Array<Comune> = [
-    {
-      codComune: "A001",
-      codUnitaTerritoriale: "01",
-      progressivoComune: "001",
-      denItaExt: "Abano Terme",
-      denIta: "Abano Terme",
-      flagCapoluogo: "N"
-    },
-    {
-      codComune: "A004",
-      codUnitaTerritoriale: "01",
-      progressivoComune: "004",
-      denItaExt: "Abbadia Cerreto",
-      denIta: "Abbadia Cerreto",
-      flagCapoluogo: "N"
-    }
-  ];
+  }
 
   findAll() {
-    return this.comuniArray
+    //Ritorna un oggetto obervable
+    return this.httpClient.get("http://localhost:8080/api/v1/comuni")
   }
-  
+
 
 }
 
