@@ -1,0 +1,5 @@
+[
+    { "wishText": "Imparare angular", "isComplete": false },
+    { "wishText": "Imparare react", "isComplete": true },
+    { "wishText": "Imparare linux", "isComplete": false }
+  ]

@@ -1,13 +1,16 @@
-import { Observable, Subject } from "rxjs";
+import { Injectable } from "@angular/core";
+import { Subject } from "rxjs";
 
-class eventService {
+@Injectable({
+    providedIn: "root"
+})
+export class EventService {
     //Serve per passare eventi dall'oggetto observable
     private subject = new Subject()
 
-    emit(eventName: string, payolad: any) {
-        //Quando viene emesso un evento la funzione next viene chiamata, viene passato questo oggetto {eventName, payolad}
-        //Questo oggetto viene passato alla funzione callback
-        this.subject.next({eventName, payolad})
+    emit(eventName: string, payload: any) {
+        //Dico al subject di notificare tutti gli observer sottoscritti
+        this.subject.next({eventName, payload})
     }
 
     listen(eventName: string, callback: (event: any) => void) {
@@ -18,5 +21,3 @@ class eventService {
         })
     }
 }
-
-export default new eventService()
