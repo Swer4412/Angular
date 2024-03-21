@@ -1,0 +1,18 @@
+<div>
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+      <input class="form-control" ((ngModel))="userName"/>
+      <label class="form-label">Username</label>
+    </div>
+  
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      <input type="password" class="form-control" ((ngModel))="password"/>
+      <label class="form-label">Password</label>
+    </div>
+
+    <!-- Submit button -->
+  <button type="button" class="btn btn-primary btn-block mb-4" (click)="HandleClick($event)">Sign in</button>
+
+</div>
+  

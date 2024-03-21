@@ -16,6 +16,14 @@ export class ComuniService {
     return this.httpClient.get("http://localhost:8080/api/v1/comuni")
   }
 
+  login(username: string, password : string) {
+    this.httpClient.post("http://localhost:8080/api/v1/auth/login",
+    {
+      username: username,
+      password: password
+    })
+  }
+
 
 }
 
