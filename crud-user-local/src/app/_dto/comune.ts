@@ -1,7 +1,7 @@
 export interface Comune{
     
     codComune: string,
-    codUnitaTerritoriale : string,
+    codUnitaTerr : string,
     progressivoComune: string,
     denItaExt: string,
     denIta: string,
