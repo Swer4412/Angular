@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { WishItem } from '../../share/models/wishItem';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { WishListComponent } from './wish/wish-list/wish-list.component';
 import { AddWishFormComponent } from './wish/add-wish-form/add-wish-form.component';
 import { WishFilterComponent } from './wish/wish-filter/wish-filter.component';
-import { EventService } from '../../share/services/EventService';
 import { HttpClientModule } from '@angular/common/http';
-import { WishService } from './wish.service';
+import { WishComponent } from './wish/wish.component';
 
 @Component({
   selector: 'app-root', //Questo determina come il componente puo essere richiamato es. <app-root></app-root>
@@ -21,31 +19,13 @@ import { WishService } from './wish.service';
     AddWishFormComponent,
     WishFilterComponent,
     HttpClientModule,
+    WishComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
-  items: WishItem[] = [];
+  constructor() {}
 
-  constructor(events: EventService, private wishService: WishService) {
-    events.listen('removeWish', (wish: any) => {
-      let index = this.items.indexOf(wish);
-      this.items.splice(index, 1);
-    });
-  }
-
-  ngOnInit(): void {
-    this.wishService.getWishes().subscribe(
-      (data: any) => {
-        //Passo una funzione callback da chiamare quando la richiesta è stata completata
-        this.items = data;
-      },
-      (error: any) => {
-        alert(error.message);
-      }
-    );
-  }
-
-  filter: any;
+  ngOnInit(): void {}
 }
