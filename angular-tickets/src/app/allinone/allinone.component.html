@@ -1,0 +1,51 @@
+<form [formGroup]="bigliettoFG">
+    <div class="m-3 row col-3">
+        <label for="stazione1" class="col-xs-3 col-sm-auto col-form-label">Nominativo</label>
+        <div class="col">
+            <small class="form-text text-muted">
+                valid={{bigliettoFG.get('nominativo')?.valid}},
+                dirty={{bigliettoFG.get('nominativo')?.dirty}},
+                touched={{bigliettoFG.get('nominativo')?.touched}}
+            </small>            
+            <input id="nominativo" type="text" class="form-control" formControlName="nominativo" minlength="3">
+        </div>
+    </div>
+    <div class="m-3 row col-3">
+        <label for="stazione1" class="col-xs-3 col-sm-auto col-form-label">St. Partenza</label>
+        <div class="col">
+            <small class="form-text text-muted">
+                valid={{bigliettoFG.get('stazione1')?.valid}},
+                dirty={{bigliettoFG.get('stazione1')?.dirty}},
+                touched={{bigliettoFG.get('stazione1')?.touched}}
+            </small>            
+            <input id="typeahead-basic" type="text" class="form-control" formControlName="stazione1" [ngbTypeahead]="search" />
+        </div>
+    </div>
+    <div class="m-3 row col-3">
+        <label for="stazione2" class="col-xs-3 col-sm-auto col-form-label">St. Arrivo</label>
+        <div class="col">
+            <input id="stazione2" type="text" class="form-control" formControlName="stazione2" minlength="2">
+        </div>
+    </div>
+    <button class="btn btn-primary" (click) = "save()">Salva</button>
+</form>
+<div class="m-3">    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col" sortable="name">Nominativo</th>
+                <th scope="col" sortable="area">St. Partenza</th>
+                <th scope="col" sortable="population">St. Arrivo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let t of list">
+                <td>{{t.id}}</td>
+                <td>{{t.nominativo}}</td>
+                <td>{{t.stazionePartenza}}</td>
+                <td>{{t.stazioneArrivo}}</td>
+            </tr>
+        </tbody>
+    </table>    
+</div>
