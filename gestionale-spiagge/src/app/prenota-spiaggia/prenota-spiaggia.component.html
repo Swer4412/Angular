@@ -1,0 +1,63 @@
+<mat-card class="shipping-card">
+  <mat-card-header>
+      <mat-card-title>Informazioni di Prenotazione</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+      <div class="row">
+          <div class="col">
+              <mat-form-field class="full-width">
+                  <mat-label>Data</mat-label>
+                  <input matInput placeholder="" readonly="true" [value]="calendarioItem?.data | date:'dd/MM/yyyy'">
+              </mat-form-field>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col">
+              <mat-form-field class="full-width">
+                  <mat-label>Spiaggia</mat-label>
+                  <input matInput placeholder="" readonly="true" [value]="calendarioItem?.spiaggia?.denominazione">
+              </mat-form-field>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col">
+
+              <mat-form-field class="full-width">
+                  <mat-label>Spiaggia (Indirizzo)</mat-label>
+                  <input matInput placeholder="" readonly="true" [value]="calendarioItem?.spiaggia?.indirizzo">
+              </mat-form-field>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col">
+
+              <mat-form-field class="full-width">
+                  <mat-label>Spiaggia (Disponibilità)</mat-label>
+                  <input matInput placeholder="" readonly="true" [value]="calendarioItem?.disponibilita">
+              </mat-form-field>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col">
+            <!--
+              <mat-form-field class="full-width">
+                  <mat-label>Posti</mat-label>
+                  <input matInput placeholder="" [formControl]="postiControl" type="number">
+                  @if (postiControl.hasError('required')) {
+                      <mat-error>Il numero posti <strong>è richiesto</strong></mat-error>
+                  }
+                  @if (postiControl.hasError('max')) {
+                      <mat-error>Inserito valore <strong>troppo grande</strong></mat-error>
+                  }
+                  </mat-form-field>
+              -->
+          </div>
+      </div>
+      <mat-card-actions>
+        <!--
+          <button mat-raised-button color="primary" type="submit" [disabled]="postiControl.invalid" (click) = "prenota()">Conferma</button>
+        -->
+      </mat-card-actions>
+  </mat-card-content>
+</mat-card>
