@@ -1,0 +1,39 @@
+<mat-card>
+    <form [formGroup]="noleggioForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Categoria</mat-label>
+        <mat-select formControlName="categoria">
+          <mat-option value="CAT-A">CAT-A</mat-option>
+          <mat-option value="CAT-B">CAT-B</mat-option>
+          <mat-option value="CAT-C">CAT-C</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Data Ritiro</mat-label>
+        <input matInput [matDatepicker]="picker1" formControlName="dataRitiro">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Data Consegna</mat-label>
+        <input matInput [matDatepicker]="picker2" formControlName="dataConsegna">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Nominativo</mat-label>
+        <input matInput formControlName="nominativo">
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Codice Fiscale</mat-label>
+        <input matInput formControlName="codiceFiscale">
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" type="submit" [disabled]="!noleggioForm.valid">Prenota</button>
+    </form>
+  </mat-card>
+  

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CalendarioItem } from './_models/calendario-item';
 import { Spiaggia } from './_models/spiaggia';
+import { Prenotazione } from './_models/prenotazione';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,6 @@ export class GestioneSpiaggeService {
 
   ]
 
-  //private calendario: {[key: string]:CalendarioItem[]} = {};
   private calendario: CalendarioItem[] = [];
 
   constructor() {
@@ -46,4 +46,24 @@ export class GestioneSpiaggeService {
     }
     throw new Error(`Invalid id ${id}`);
   }
+
+  listPrenotazioni : Prenotazione[] = []
+
+  prenota(item : CalendarioItem, posti: number) {
+    let generatedCode = 'aa000aa'
+
+    this.listPrenotazioni.push({
+      generatedCode: generatedCode,
+      calendarioItem: item,
+      posti: posti
+    })
+
+    item.disponibilita -= posti
+
+  }
+
+  getPrenotazioni() {
+    return this.listPrenotazioni
+  }
+
 }
