@@ -25,7 +25,7 @@ export class PrenotaComponent {
   constructor(private fb: FormBuilder) {
     this.noleggioForm = this.fb.group({
       categoria: ['', Validators.required],
-      prezzoGiornaliero: [null, Validators.required],
+      prezzoGiornaliero: ['', Validators.required],
       dataRitiro: ['', Validators.required],
       dataConsegna: ['', Validators.required],
       nominativo: ['', Validators.required],
