@@ -6,10 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class NoleggioService {
-  private apiUrl = 'http://localhost:8080/api/';
+  private apiUrl = 'http://localhost:8080/api/v1/auto/';
 
   constructor(private http: HttpClient) {}
 
+  //Nonostante l'api ritorna una stringa, questa funzione ritorna un observable
   prenotaNoleggio(noleggioData: any): Observable<any> {
     return this.http.post(this.apiUrl + 'prenota', noleggioData);
   }

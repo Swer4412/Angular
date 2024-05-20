@@ -25,7 +25,6 @@ export class PrenotaComponent {
   constructor(private fb: FormBuilder) {
     this.noleggioForm = this.fb.group({
       categoria: ['', Validators.required],
-      prezzoGiornaliero: ['', Validators.required],
       dataRitiro: ['', Validators.required],
       dataConsegna: ['', Validators.required],
       nominativo: ['', Validators.required],
@@ -38,7 +37,9 @@ export class PrenotaComponent {
   onSubmit() {
     if (this.noleggioForm.valid) {
 
-      this.service.prenotaNoleggio(this.noleggioForm.value)
+      this.service.prenotaNoleggio(this.noleggioForm.value).subscribe((codiceConferma) => {
+        alert(codiceConferma)
+      })
 
     }
   }
