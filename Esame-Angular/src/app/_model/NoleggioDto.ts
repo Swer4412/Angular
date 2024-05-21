@@ -7,5 +7,6 @@ export interface Noleggio {
     dataConsegna: Date;
     nominativo: string;
     codiceFiscale: string;
+    prezzoTotale: number;
   }
   

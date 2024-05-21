@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class NoleggioService {
   private apiUrl = 'http://localhost:8080/api/v1/auto/';
@@ -12,13 +12,11 @@ export class NoleggioService {
 
   //Nonostante l'api ritorna una stringa, questa funzione ritorna un observable
   prenotaNoleggio(noleggioData: any): Observable<any> {
-    return this.http.post(this.apiUrl + 'prenota', noleggioData);
+    //Aggiungo il prezzo giornaliero
+    return this.http.post(this.apiUrl + 'noleggio', noleggioData);
   }
 
   prendiNoleggi(): Observable<any> {
-    return this.http.get(this.apiUrl + 'prenotazioni');
+    return this.http.get(this.apiUrl + 'noleggi');
   }
-
-
-
 }

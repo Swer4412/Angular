@@ -22,11 +22,19 @@ export class TabellaDataSource extends DataSource<Noleggio> {
     super();
 
     //Chiamo la funzione per ottenere i dati e poi metto come data ció che viene ritornato
-    this.service.prendiNoleggi().subscribe(data => {
-
-      //this.data é giá di tipo Noleggio quindi posso assegnargli il valore ritornato
-      this.data = data
-    })
+    this.service.prendiNoleggi().subscribe(noleggi => {
+      console.log(noleggi);
+      noleggi.map((noleggio: Noleggio) => {
+        const dataConsegna = new Date(noleggio.dataConsegna);
+        const dataRitiro = new Date(noleggio.dataRitiro);
+        const differenzaTempo = dataConsegna.getTime() - dataRitiro.getTime();
+        const differenzaGiorni = differenzaTempo / (1000 * 3600 * 24);
+        noleggio.prezzoTotale = differenzaGiorni * noleggio.prezzoGiornaliero;
+      });
+      // Assicurati che 'data' sia definito correttamente prima di assegnarlo a this.data
+      this.data = noleggi; // presumendo che 'data' sia un errore di battitura e intendevi 'noleggi'
+    });
+    
   }
 
   /**
