@@ -3,8 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import { NoleggioService } from '../noleggio.service';
-import { Noleggio } from '../_model/NoleggioDto';
+import { AssistenzaService } from '../assistenza.service';
+import { Assistenza } from '../_model/AssistenzaDto';
 import { inject } from '@angular/core';
 
 /**
@@ -12,27 +12,20 @@ import { inject } from '@angular/core';
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class TabellaDataSource extends DataSource<Noleggio> {
-  data: Noleggio[] = [];
+export class TabellaDataSource extends DataSource<Assistenza> {
+  data: Assistenza[] = [];
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
-  service : NoleggioService = inject(NoleggioService)
+  service : AssistenzaService = inject(AssistenzaService)
   
   constructor() {
     super();
 
     //Chiamo la funzione per ottenere i dati e poi metto come data ció che viene ritornato
-    this.service.prendiNoleggi().subscribe(noleggi => {
-      console.log(noleggi);
-      noleggi.map((noleggio: Noleggio) => {
-        const dataConsegna = new Date(noleggio.dataConsegna);
-        const dataRitiro = new Date(noleggio.dataRitiro);
-        const differenzaTempo = dataConsegna.getTime() - dataRitiro.getTime();
-        const differenzaGiorni = differenzaTempo / (1000 * 3600 * 24);
-        noleggio.prezzoTotale = differenzaGiorni * noleggio.prezzoGiornaliero;
-      });
-      // Assicurati che 'data' sia definito correttamente prima di assegnarlo a this.data
-      this.data = noleggi; // presumendo che 'data' sia un errore di battitura e intendevi 'noleggi'
+    this.service.prendiAssistenze().subscribe(assistenze => {
+      //Il prezzo totale lo calcolo in backend e lo ritorno 
+      this.data = assistenze;
+      
     });
     
   }
@@ -42,7 +35,7 @@ export class TabellaDataSource extends DataSource<Noleggio> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<Noleggio[]> {
+  connect(): Observable<Assistenza[]> {
     if (this.paginator && this.sort) {
       // Combine everything that affects the rendered data into one update
       // stream for the data-table to consume.
@@ -72,7 +65,7 @@ export class TabellaDataSource extends DataSource<Noleggio> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: Noleggio[]): Noleggio[] {
+  private getPagedData(data: Assistenza[]): Assistenza[] {
     if (this.paginator) {
       const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
       return data.splice(startIndex, this.paginator.pageSize);
@@ -85,7 +78,7 @@ export class TabellaDataSource extends DataSource<Noleggio> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: Noleggio[]): Noleggio[] {
+  private getSortedData(data: Assistenza[]): Assistenza[] {
     if (!this.sort || !this.sort.active || this.sort.direction === '') {
       return data;
     }

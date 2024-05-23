@@ -2,7 +2,7 @@
   <mat-card-header>
     <mat-card-title>Compila il form</mat-card-title>
   </mat-card-header>
-  <form [formGroup]="noleggioForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="assistenzaForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
 
       <div class="row">
@@ -20,8 +20,17 @@
       <div class="row">
         <div class="col">
           <mat-form-field appearance="fill">
-            <mat-label>Data Ritiro</mat-label> <!-- Quando viene scelta la data di inizio, la data di consegna deve esssere > di 1 -->
-            <input matInput [matDatepicker]="picker1" [min]="minDateWithdrawal" formControlName="dataRitiro">
+            <mat-label>Durata in Ore</mat-label>
+            <input type="number" matInput formControlName="durataOre" min="1">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field appearance="fill">
+            <mat-label>Data Ritiro</mat-label>
+            <input matInput [matDatepicker]="picker1" [max]="today" formControlName="dataRitiro">
             <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
             <mat-datepicker #picker1></mat-datepicker>
           </mat-form-field>
@@ -31,34 +40,14 @@
       <div class="row">
         <div class="col">
           <mat-form-field appearance="fill">
-            <mat-label>Data Consegna</mat-label>
-            <input matInput [matDatepicker]="picker2" [min]="minDateDelivery" formControlName="dataConsegna">
-            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-            <mat-datepicker #picker2></mat-datepicker>
-          </mat-form-field>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col">
-          <mat-form-field appearance="fill">
             <mat-label>Nominativo</mat-label>
-            <input matInput formControlName="nominativo">
-          </mat-form-field>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col">
-          <mat-form-field appearance="fill">
-            <mat-label>Codice Fiscale</mat-label>
-            <input matInput formControlName="codiceFiscale">
+            <input matInput formControlName="nominativo" minlength="4">
           </mat-form-field>
         </div>
       </div>
 
       <mat-card-actions>
-        <button mat-raised-button color="primary" type="submit" [disabled]="!noleggioForm.valid">Prenota</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!assistenzaForm.valid">Prenota</button>
       </mat-card-actions>
 
     </mat-card-content>

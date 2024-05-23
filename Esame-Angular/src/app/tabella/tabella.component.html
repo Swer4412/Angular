@@ -16,9 +16,14 @@
       <td mat-cell *matCellDef="let row">{{row.categoria}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="prezzoGiornaliero">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Prezzo Giornaliero</th>
-      <td mat-cell *matCellDef="let row">{{row.prezzoGIornaliero}}</td>
+    <ng-container matColumnDef="costoOrario">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Costo Orario</th>
+      <td mat-cell *matCellDef="let row">{{row.costoOrario}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="durataOre">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Durata in ore</th>
+      <td mat-cell *matCellDef="let row">{{row.durataOre}}</td>
     </ng-container>
 
     <ng-container matColumnDef="dataRitiro">
@@ -26,24 +31,14 @@
       <td mat-cell *matCellDef="let row">{{row.dataRitiro}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="dataConsegna">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Data Consegna</th>
-      <td mat-cell *matCellDef="let row">{{row.dataConsegna}}</td>
-    </ng-container>
-
     <ng-container matColumnDef="nominativo">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Nominativo</th>
       <td mat-cell *matCellDef="let row">{{row.nominativo}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="codiceFiscale">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Codice Fiscale</th>
-      <td mat-cell *matCellDef="let row">{{row.codiceFiscale}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="prezzoTotale">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Prezzo Totale</th>
-      <td mat-cell *matCellDef="let row">{{row.prezzoTotale}}</td>
+    <ng-container matColumnDef="costoTotale">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Costo Totale</th>
+      <td mat-cell *matCellDef="let row">{{row.costoTotale}}</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
