@@ -1,0 +1,45 @@
+<div class="mat-elevation-z8">
+  <table mat-table class="full-width-table" matSort aria-label="Elements">
+    
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>id</th>
+      <td mat-cell *matCellDef="let row">{{row.id}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="utente">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Paziente</th>
+      <td mat-cell *matCellDef="let row">{{row.utente.nome}}{{row.utente.cognome}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="medico">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Medico</th>
+      <td mat-cell *matCellDef="let row">{{row.medico.nome}}{{row.medico.cognome}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dataOra">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Data e ora</th>
+      <td mat-cell *matCellDef="let row">{{row.dataOra}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dataPrenotazione">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Data prenotazione</th>
+      <td mat-cell *matCellDef="let row">{{row.dataPrenotazione}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="codicePrenotazione">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Codice prenotazione</th>
+      <td mat-cell *matCellDef="let row">{{row.codicePrenotazione}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator #paginator
+      [length]="dataSource.data.length"
+      [pageIndex]="0"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 20]"
+      aria-label="Select page">
+  </mat-paginator>
+</div>
