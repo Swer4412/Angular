@@ -1,19 +1,32 @@
-<div class="example-form">
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Login</mat-card-title>
+  </mat-card-header>
 
-  <mat-form-field class="example-full-width">
-    <mat-label>Email</mat-label> <!-- TODO sistemare -->
-    <input matInput [(ngModel)]="userName">
-  </mat-form-field>
+  <form [formGroup]="loginForm" (ngSubmit)="HandleClick($event)">
+    <mat-card-content>
 
-  <mat-divider></mat-divider>
+      <div class="example-container">
+        <mat-form-field>
+          <mat-label>Inserisci email</mat-label>
+          <input matInput placeholder="nome@esempio.it" formControlName="email" required />
+        </mat-form-field>
+      </div>
 
-  <mat-form-field class="example-full-width">
-    <mat-label>Password</mat-label>
-    <input matInput type="password" [(ngModel)]="password">
-  </mat-form-field>
+      <mat-divider></mat-divider>
 
-  <mat-divider></mat-divider>
+      <mat-form-field class="example-full-width">
+        <mat-label>Inserisci password</mat-label>
+        <input matInput type="password" formControlName="password">
+      </mat-form-field>
 
-  <button mat-flat-button (click)="HandleClick($event)">Entra</button>
+      <mat-divider></mat-divider>
 
-</div>
+      <a mat-list-item href="#" [routerLink]="'/register'">Registrati</a>
+      <button mat-flat-button>Entra</button>
+
+
+    </mat-card-content>
+  </form>
+
+</mat-card>

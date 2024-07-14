@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PrenotazioneDTO } from './_model/PrenotazioneDTO';
+import { LoginData } from './_model/LoginData';
 
 @Injectable({
   providedIn: 'root',
@@ -26,14 +27,4 @@ export class PrenotazioneService {
     return this.http.get(this.apiUrl + '/prenotazioni'); //TODO
   }
 
-  login(username: string, password: string) { //TODO
-    
-    const url = 'http://localhost:8080/api/v1/auth/login';
-    const body = {
-      username: username,
-      password: password
-    };
-
-    return this.http.post(url, body, { responseType : "text" })
-  }
 }
