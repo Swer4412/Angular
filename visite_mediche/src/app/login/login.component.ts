@@ -47,8 +47,7 @@ export class LoginComponent {
     });
   }
 
-  HandleClick($event: MouseEvent) {
-    debugger;
+  HandleClick() {
     if (!this.loginForm.valid) {
       return;
     }

@@ -1,1 +1,47 @@
-<p>register works!</p>
+<mat-card class="form-card">
+    <mat-card-header>
+        <mat-card-title>Registrati</mat-card-title>
+    </mat-card-header>
+
+    <form [formGroup]="utenteForm" (ngSubmit)="onSubmit()">
+        <mat-card-content>
+            <div class="form-container">
+                <mat-form-field appearance="fill">
+                    <mat-label>Nome</mat-label>
+                    <input matInput formControlName="nome" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Cognome</mat-label>
+                    <input matInput formControlName="cognome" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" required type="email">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Codice Fiscale</mat-label>
+                    <input matInput formControlName="codiceFiscale" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Data di Nascita</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="dataNascita" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+            </div>
+        </mat-card-content>
+
+        <mat-divider></mat-divider>
+
+        <mat-card-actions>
+            <a mat-list-item href="#" [routerLink]="'/login'">Effettua il login</a>
+
+            <button mat-raised-button color="primary" type="submit" [disabled]="!utenteForm.valid">Registrati</button>
+        </mat-card-actions>
+    </form>
+</mat-card>
