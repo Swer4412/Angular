@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginData } from './_model/LoginData';
+import { UtenteDTO } from './_model/UtenteDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,10 @@ export class AuthService {
     };
 
     return this.http.post(url, body, { responseType : "text" })
+  }
+
+  register(data: UtenteDTO) {
+    const url = this.apiUrl + '/register'
+    return this.http.post(url, data)
   }
 }

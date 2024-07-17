@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PrenotazioneDTO } from './_model/PrenotazioneDTO';
 import { LoginData } from './_model/LoginData';
@@ -13,18 +13,20 @@ export class PrenotazioneService {
   //Inietto l'httpClient come dipendenza
   constructor(private http: HttpClient) {}
 
-  //TODO autorization con token in ogni richiesta
+  token = localStorage.getItem("token")
+
+  headers = new HttpHeaders().set("Authorization", "Bearer " + this.token);
 
   prenotaVisita(prenotazioneData: PrenotazioneDTO): Observable<any> {
-    return this.http.post(this.apiUrl + '/prenota', prenotazioneData);
+    return this.http.post(this.apiUrl + '/prenota', prenotazioneData, {headers: this.headers});
   }
 
   prendiMedici(): Observable<any> {
-    return this.http.get(this.apiUrl + '/medici');
+    return this.http.get(this.apiUrl + '/medici', {headers: this.headers});
   }
 
   prendiPrenotazioniDaIdUtente(id_utente: number): Observable<any> {
-    return this.http.get(this.apiUrl + '/prenotazioni'); //TODO
+    return this.http.get(this.apiUrl + '/prenotazioni', {headers: this.headers}); //TODO
   }
 
 }

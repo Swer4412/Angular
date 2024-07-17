@@ -3,6 +3,7 @@ export interface UtenteDTO {
     nome: string,
     cognome: string,
     email: string,
+    password: string,
     codiceFiscale: string,
-    dataNascita: string
+    dataNascita: string,
 }
