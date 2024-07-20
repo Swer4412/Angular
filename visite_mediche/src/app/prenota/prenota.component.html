@@ -11,7 +11,8 @@
             <mat-label>Medico</mat-label>
             <!-- formControlName serve per fare il binding del valore con il campo della form control-->
             <mat-select formControlName="medico">
-              <mat-option *ngFor="let medico of medici" value={{medico.id}}>{{medico.nome}} | {{medico.specialita}}</mat-option>
+              <mat-option *ngFor="let medico of medici" value={{medico.id}}>{{medico.nome}} |
+                {{medico.specialita}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -21,7 +22,7 @@
         <div class="col">
           <mat-form-field appearance="fill">
             <mat-label>Data visita</mat-label>
-            <input matInput [matDatepicker]="picker1" [min]="today" formControlName="dataOra">
+            <input matInput [matDatepicker]="picker1" [min]="today" formControlName="data">
             <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
             <mat-datepicker #picker1></mat-datepicker>
           </mat-form-field>
@@ -32,7 +33,7 @@
         <div class="col">
           <mat-form-field appearance="fill">
             <mat-label>Ora visita</mat-label>
-            <input matInput formControlName="ora"> <!-- TODO controlli ora max 19 min 7-->
+            <input type="number" min="8" max="18" matInput formControlName="ora"> <!-- TODO controlli ora max 19 min 7-->
           </mat-form-field>
         </div>
       </div>

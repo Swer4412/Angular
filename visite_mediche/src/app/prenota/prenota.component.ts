@@ -38,7 +38,7 @@ export class PrenotaComponent {
     this.prenotazioneForm = this.fb.group({
       medico: ['', Validators.required],
       data: ['', Validators.required],
-      ora: ['', Validators.required],
+      ora: ['', [Validators.required, Validators.min(8), Validators.max(18)]],
     });
 
     //Quando carico la pagina prendo i medici dal service
@@ -51,7 +51,7 @@ export class PrenotaComponent {
 
   today : Date = new Date()
 
-   //Definisco le categorie
+  //Definisco le categorie
   medici : Array<MedicoDTO> = [];
 
   //Inietto il service

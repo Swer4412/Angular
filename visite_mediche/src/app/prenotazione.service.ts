@@ -13,20 +13,25 @@ export class PrenotazioneService {
   //Inietto l'httpClient come dipendenza
   constructor(private http: HttpClient) {}
 
-  token = localStorage.getItem("token")
+  token = localStorage.getItem('token');
 
-  headers = new HttpHeaders().set("Authorization", "Bearer " + this.token);
+  headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
 
   prenotaVisita(prenotazioneData: PrenotazioneDTO): Observable<any> {
-    return this.http.post(this.apiUrl + '/prenota', prenotazioneData, {headers: this.headers});
+    prenotazioneData.dataPrenotazione = new Date();
+
+    return this.http.post(this.apiUrl + '/prenota', prenotazioneData, {
+      headers: this.headers,
+    });
   }
 
   prendiMedici(): Observable<any> {
-    return this.http.get(this.apiUrl + '/medici', {headers: this.headers});
+    return this.http.get(this.apiUrl + '/medici', { headers: this.headers });
   }
 
   prendiPrenotazioniDaIdUtente(id_utente: number): Observable<any> {
-    return this.http.get(this.apiUrl + '/prenotazioni', {headers: this.headers}); //TODO
+    return this.http.get(this.apiUrl + '/prenotazioni', {
+      headers: this.headers,
+    }); //TODO
   }
-
 }
