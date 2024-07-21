@@ -39,7 +39,21 @@ import { Router, RouterLink } from '@angular/router';
 export class RegisterComponent {
   utenteForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService : AuthService, private router: Router,) {
+  today: Date = new Date();
+
+  //Solo i maggiorenni possono registrarsi
+  dateEighteenYearsAgo: Date = new Date(
+    this.today.getFullYear() - 18,
+    this.today.getMonth(),
+    this.today.getDate()
+  );
+
+  //Le cose che vengono messe nel costruttore vengono inzializzate appena viene inzializzato il componente
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
     this.utenteForm = this.fb.group({
       nome: ['', Validators.required],
       cognome: ['', Validators.required],
@@ -50,11 +64,16 @@ export class RegisterComponent {
     });
   }
 
+  //Quando viene cliccato il bottone per la registrazione, viene attivata questa funzione
   onSubmit() {
+    //Se il form é valido
     if (this.utenteForm.valid) {
+      //Registro l'utente
       this.authService.register(this.utenteForm.value).subscribe(() => {
-        this.router.navigateByUrl("/login")
-      })
+        //Se non ci sono problemi, faccio andare il nuovo utente sulla login
+        alert("Registrazione effettuata con successo!")
+        this.router.navigateByUrl('/login');
+      });
     }
   }
 }

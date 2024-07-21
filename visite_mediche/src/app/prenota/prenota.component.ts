@@ -32,8 +32,10 @@ import { MedicoDTO } from '../_model/MedicoDTO';
   styleUrls: ['./prenota.component.css'],
 })
 export class PrenotaComponent {
+
   prenotazioneForm: FormGroup;
-  
+
+  //Inizializzo nel constructor il formbuilder per la form e il router per la navigazione
   constructor(private fb: FormBuilder, private router: Router) {
     this.prenotazioneForm = this.fb.group({
       medico: ['', Validators.required],
@@ -41,7 +43,7 @@ export class PrenotaComponent {
       ora: ['', [Validators.required, Validators.min(8), Validators.max(18)]],
     });
 
-    //Quando carico la pagina prendo i medici dal service
+    //Quando carico la pagina prendo i dati dal service
     this.service
         .prendiMedici()
         .subscribe((medici: MedicoDTO[]) => {
@@ -64,7 +66,8 @@ export class PrenotaComponent {
         .prenotaVisita(this.prenotazioneForm.value)
         .subscribe((entity: PrenotazioneDTO) => {
           alert(`Inserita prenotazione con codice di conferma ${entity.codiceConferma}`)
-          this.router.navigate(['/prenotazioni']);
+          //Navigo alla nuova route per una migliore esperienza utente
+          this.router.navigate(['/prenotazioni']); 
         });
     }
   }

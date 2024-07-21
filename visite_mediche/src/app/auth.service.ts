@@ -7,6 +7,7 @@ import { UtenteDTO } from './_model/UtenteDTO';
   providedIn: 'root'
 })
 export class AuthService {
+  //Url che uso per tutte le chiamte in questo service
   private apiUrl = 'http://localhost:8080/api/v1/auth';
 
   constructor(private http: HttpClient) {}

@@ -21,7 +21,7 @@ export class MediciDataSource extends DataSource<MedicoDTO> {
   constructor() {
     super();
 
-    //Chiamo la funzione per ottenere i dati e poi metto come data ció che viene ritornato
+    //Chiamo la funzione per ottenere i dati e poi metto come data della tabella ció che viene ritornato dal back-end
     this.service.prendiMedici().subscribe(assistenze => {
       //Il prezzo totale lo calcolo in backend e lo ritorno 
       this.data = assistenze;

@@ -5,10 +5,12 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <!-- Questi link servono a me, non all'utente finale -->
+      <!-- Questi link servono a me, non tutti servono all'utente finale -->
       <a mat-list-item href="#" [routerLink]="'/medici'">Medici</a>
       <a mat-list-item href="#" [routerLink]="'/prenota'">Prenota</a>
       <a mat-list-item href="#" [routerLink]="'/prenotazioni'">Prenotazioni</a>
+      <a mat-list-item href="#" (click)="logout()">Logout</a>
+
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

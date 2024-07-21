@@ -33,7 +33,7 @@
 
                 <mat-form-field appearance="fill">
                     <mat-label>Data di Nascita</mat-label>
-                    <input matInput [matDatepicker]="picker" formControlName="dataNascita" required>
+                    <input matInput [matDatepicker]="picker" [max]="dateEighteenYearsAgo" formControlName="dataNascita" required>
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
